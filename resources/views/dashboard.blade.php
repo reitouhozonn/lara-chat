@@ -1,15 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
-            </div>
+    <x-slot name="sidebar">
+        <div class="border-b border-gray-200">
+            <a class="text-sm p-4 black hover:opacity-75" href="{{ route('groups.create') }}">
+                <i class="fa fa-users mr-1 w-4 text-center"></i>グループ作成
+            </a>
         </div>
-    </div>
 </x-app-layout>

@@ -43,6 +43,9 @@
                     {{ __('Login') }}
                 </x-jet-button>
             </div>
+            <div>
+                <a class="underline" href="{{ route('register') }}">{{ __('Register') }}</a>
+            </div>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
