@@ -15,7 +15,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return 'create page';
+        return view('groups.create');
     }
 
     /**
@@ -26,7 +26,7 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect('dashboard');
+        return redirect('/groups/show');
     }
 
     /**
@@ -37,7 +37,7 @@ class GroupController extends Controller
      */
     public function show(group $group)
     {
-        return 'show page';
+        return view('groups.show');
     }
 
     /**
@@ -48,7 +48,7 @@ class GroupController extends Controller
      */
     public function edit(group $group)
     {
-        return 'edit page';
+        return view('groups.edit');
     }
 
     /**
@@ -60,7 +60,7 @@ class GroupController extends Controller
      */
     public function update(Request $request, group $group)
     {
-        return redirect('dashboard');
+        return redirect('/groups/show');
     }
 
     /**
