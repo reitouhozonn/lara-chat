@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\group;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -15,7 +16,10 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('groups.create');
+        $users = User::all();
+        return view('group.create', [
+            'users' => $users,
+        ]);
     }
 
     /**
