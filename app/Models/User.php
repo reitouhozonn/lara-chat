@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable
 {
@@ -63,7 +62,7 @@ class User extends Authenticatable
 
     public function groups(): BelongsToMany
     {
-        return $this->belongsToMany('\Group')->withTimestamps();
+        return $this->belongsToMany('App\Models\Group')->withTimestamps();
     }
 
     public function belongsToGroup(int $groupId)

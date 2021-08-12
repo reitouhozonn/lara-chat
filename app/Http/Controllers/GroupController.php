@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\group;
+use App\Http\Requests\GroupPost;
+use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -17,7 +19,7 @@ class GroupController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('group.create', [
+        return view('groups.create', [
             'users' => $users,
         ]);
     }
@@ -25,12 +27,15 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param GroupPost $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(GroupPost $request)
     {
-        return redirect('/groups/show');
+        $group = Group::createGroupFromGroupPost($request);
+        return redirect()->route('groups.show', [
+            'group' => $group->id,
+        ]);
     }
 
     /**
@@ -41,7 +46,13 @@ class GroupController extends Controller
      */
     public function show(group $group)
     {
-        return view('groups.show');
+        if (!Auth::user()->belongsToGroup($group->id)) {
+            return redirect('/');
+        }
+        return view('groups.show', [
+            'group' => $group,
+            'groupMessages' => $group->messages,
+        ]);
     }
 
     /**

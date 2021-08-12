@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Requests\GroupPost;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,12 +14,12 @@ class Group extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(\User)->withTimestamps();
+        return $this->belongsToMany('App\Models\User')->withTimestamps();
     }
 
     public function messages()
     {
-        return $this->hasMany('GroupeMessage');
+        return $this->hasMany('App\Models\GroupeMessage');
     }
 
     public static function createGroupFromGroupPost(GroupPost $groupPost)
