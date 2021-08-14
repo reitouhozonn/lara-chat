@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GroupPost;
+use App\Http\Requests\GroupPut;
 use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -63,7 +64,14 @@ class GroupController extends Controller
      */
     public function edit(group $group)
     {
-        return view('groups.edit');
+        if (!Auth::user()->belongsToGroup($group->id)) {
+            return redirect('/');
+        }
+
+        return view('groups.edit', [
+            'group' => $group,
+            'users' => User::all(),
+        ]);
     }
 
     /**
@@ -73,9 +81,17 @@ class GroupController extends Controller
      * @param  \App\Models\group  $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, group $group)
+    public function update(GroupPut $request, group $group)
     {
-        return redirect('/groups/show');
+        if (!Auth::user()->belongsToGroup($group->id)) {
+            return redirect('/');
+        }
+
+        $group = $group->updateGroupFromGroupPut($request);
+
+        return redirect()->route('groups.show', [
+            'group' => $group->id,
+        ]);
     }
 
     /**

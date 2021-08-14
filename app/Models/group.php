@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Requests\GroupPost;
+use App\Http\Requests\GroupPut;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -19,7 +20,7 @@ class Group extends Model
 
     public function messages()
     {
-        return $this->hasMany('App\Models\GroupeMessage');
+        return $this->hasMany('App\Models\GroupMessage');
     }
 
     public static function createGroupFromGroupPost(GroupPost $groupPost)
