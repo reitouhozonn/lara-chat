@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Group;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Broadcast;
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('group.{group}', function ($user, Group $group) {
+    if ($user->belongsToGroup($group->id)) {
+        return ['id' => $user->id];
+    }
+
+    return null;
 });

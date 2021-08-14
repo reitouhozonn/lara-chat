@@ -102,6 +102,11 @@ class GroupController extends Controller
      */
     public function destroy(group $group)
     {
-        return redirect('dashboard');
+        if (!Auth::user()->belongsToGroup($group->id)) {
+            return redirect('/');
+        }
+
+        $group->groupDelete();
+        return redirect('/');
     }
 }

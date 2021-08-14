@@ -52,7 +52,7 @@ class Group extends Model
         return $this;
     }
 
-    public function GroupDelete()
+    public function groupDelete()
     {
         return DB::transaction(function () {
             $this->users()->detach();
