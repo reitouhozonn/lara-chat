@@ -19,7 +19,7 @@ class CreateGroupMessagesTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('group_id')->constrained();
             $table->text('message');
-            $table->string('photo', 2048);
+            $table->string('photo', 2048)->nullable();
         });
     }
 

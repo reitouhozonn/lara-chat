@@ -41,87 +41,13 @@
             </div>
             <div class="flex-1 overflow-scroll">
                 <div class="p-4 max-w-4xl m-auto">
-                    <div class="mb-4">
-                        <div class="mb-1 ml-1">
-                            <span class="text-sm mr-2">
-                                <i class="fa fa-user mr-2"></i>user_id_1
-                            </span>
-                            <span class="text-xs text-gray-500">2021時間</span>
-                        </div>
-                        <div class="bg-white p-2 pr-3 rounded flex">
-                            <div class="flex-1">
-                                <p class="text-sm">メッセージ１</p>
-                            </div>
-                            <button class="text-sm text-red-400">
-                                <i class="fa fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <div class="mb-1 ml-1">
-                            <span class="text-sm mr-2">
-                                <i class="fa fa-user mr-2"></i>user_id_2
-                            </span>
-                            <span class="text-xs text-gray-500">2021時間</span>
-                        </div>
-                        <div class="bg-white p-2 pr-3 rounded flex">
-                            <div class="flex-1">
-                                <p class="text-sm">メッセージ2</p>
-                            </div>
-                            <button class="text-sm text-red-400">
-                                <i class="fa fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <div class="mb-1 ml-1">
-                            <span class="text-sm mr-2">
-                                <i class="fa fa-user mr-2"></i>user_id_3
-                            </span>
-                            <span class="text-xs text-gray-500">2021時間</span>
-                        </div>
-                        <div class="bg-white p-2 pr-3 rounded flex">
-                            <div class="flex-1">
-                                <p class="text-sm">メッセージ3</p>
-                            </div>
-                            <button class="text-sm text-red-400">
-                                <i class="fa fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <div class="mb-1 ml-1">
-                            <span class="text-sm mr-2">
-                                <i class="fa fa-user mr-2"></i>user_id_4
-                            </span>
-                            <span class="text-xs text-gray-500">2021時間</span>
-                        </div>
-                        <div class="bg-white p-2 pr-3 rounded flex">
-                            <div class="flex-1">
-                                <p class="text-sm">メッセージ4</p>
-                            </div>
-                            <button class="text-sm text-red-400">
-                                <i class="fa fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <livewire:groups.messages.show :group="$group" />
                 </div>
             </div>
         </div>
         <div class="bg-gray-100">
             <div class="px-4">
-                <div class="p-4 max-w-4xl m-auto">
-                    <div class="flex items-center">
-                        <div class="flex-1 pr-2">
-                            <input type="text" placeholder="Message" class="w-full p-2 py-3 border rounded">
-                        </div>
-                        <div>
-                            <label class="cursor-pointer"></label>
-                            <input type="file" class="hidden">
-                            <button><i class="fa fa-paper-plane text-blue-600 p-2"></i></button>
-                        </div>
-                    </div>
-                </div>
+                <livewire:groups.messages.send :group="$group" />
             </div>
         </div>
     </x-slot>
