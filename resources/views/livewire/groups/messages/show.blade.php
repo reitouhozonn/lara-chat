@@ -48,7 +48,7 @@
     document.addEventListener('livewire:load', function(){
         Echo.join('group.' + @this.groupId)
         .listen('MessageUpdate', (e) => {
-            Livewire.emit('refreshMessage');
+            livewire.emit('refreshMessage');
         });
     });
 </script>
