@@ -22,7 +22,7 @@ class MessageUpdate
      */
     public function __construct($groupId)
     {
-        $this->gropId = $groupId;
+        $this->groupId = $groupId;
     }
 
     /**

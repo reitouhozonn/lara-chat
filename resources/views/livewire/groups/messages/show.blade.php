@@ -15,7 +15,7 @@
                         <img class="mt-2" src="{{ $message->photoUri() }}">
                     @endif
                 </div>
-                <button class="text-sm text-red-400">
+                <button class="text-sm text-red-400" wire:click="deleteMessage({{ $message->id }})">
                     <i class="fa fa-trash-alt"></i>
                 </button>
             </div>
@@ -35,16 +35,18 @@
                         <img class="mt-2" src="{{ $message->photoUri() }}">
                     @endif
                 </div>
-                <button class="text-sm text-red-400">
-                    <i class="fa fa-trash-alt"></i>
-                </button>
             </div>
         </div>
         @endif
     @endforeach
 </div>
+@livewireScripts
 
 <script>
+    document.addEventListener('livewire:load', function() {
+        livewire.emit('refreshMessage' + @this.groupId);
+    });
+
     document.addEventListener('livewire:load', function(){
         Echo.join('group.' + @this.groupId)
         .listen('MessageUpdate', (e) => {

@@ -37,4 +37,14 @@ class Show extends Component
     {
         return view('livewire.groups.messages.show');
     }
+
+    public function deleteMessage($message_id)
+    {
+        $groupeMessage = GroupMessage::find($message_id);
+        if ($groupeMessage->user_id == $this->userId) {
+            $groupeMessage->delete();
+            $this->emit('refreshMessage');
+            broadcast(new MessageUpdate($this->group->id))->toOthers();
+        }
+    }
 }
