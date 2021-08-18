@@ -15,6 +15,11 @@ class Send extends Component
     public $message;
     public $photo;
 
+    public function mount($group)
+    {
+        $this->group = $group;
+    }
+
     public function render()
     {
         return view('livewire.groups.messages.send');

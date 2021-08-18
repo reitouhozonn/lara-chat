@@ -14,6 +14,7 @@ class MessageUpdate
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $groupId;
     /**
      * Create a new event instance.
      *

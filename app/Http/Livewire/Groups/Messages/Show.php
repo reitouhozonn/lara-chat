@@ -13,6 +13,10 @@ class Show extends Component
     public $groupId;
     public $messages = [];
 
+    public function refreshMessage()
+    {
+        $this->messages = $this->group->messages;
+    }
 
     public function mount($group)
     {
@@ -32,10 +36,5 @@ class Show extends Component
     public function render()
     {
         return view('livewire.groups.messages.show');
-    }
-
-    public function refreshMessage()
-    {
-        $this->messages = $this->group->messages;
     }
 }
